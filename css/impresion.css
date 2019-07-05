@@ -1,0 +1,159 @@
+.modal-impresion {
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    width: 60vw;
+    /* height: 50vh; */
+    background: white;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+
+.modal-impresion.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.btn.cerrar-impresion {
+    position: absolute;
+    right: 0;
+    border-radius: 0;
+    width: 30px;
+    height: 30px;
+    color: #CC2329;
+    background: white;
+    outline: 0;
+    padding: 0;
+}
+
+.btn.cerrar-impresion:focus {
+    box-shadow: none;
+}
+
+.btn.cerrar-impresion:active {
+    transform: scale(.9);
+}
+
+.overlayd {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+
+.overlayd.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.card-header.impresion {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 0;
+    position: relative;
+}
+
+.card-body.reg {
+    padding: 50px 0;
+    position: relative;
+}
+
+.logo-impre-container {
+    background: rgb(48, 48, 48);
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.logo-impre-container img {
+    width: 60%
+}
+
+.titulo-detalle {
+    background: #CC2329;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo-detalle h2 {
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.btn-registro.rojo {
+    background: #CC2329;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.btn-registro {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0px -0.2em rgb(87, 87, 87);
+    outline: 0;
+    transition: .3s;
+    will-change: transform;
+    margin-top: 2px;
+}
+
+.registro {
+    text-align: center;
+}
+
+.form-registro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px
+}
+
+.registro-estudiante {
+    padding: 8px 0;
+    /* border-radius: 10px; */
+    /* border: 1px solid rgb(141, 141, 141); */
+    outline: none;
+    background: transparent;
+    border: 1px solid rgb(143, 143, 143) !important;
+    border-radius: 15px;
+    text-align: center;
+    width: 30%;
+    /* font-weight: bold; */
+    color: black;
+}
+
+.form-datos {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.form-datos label {
+    padding-left: 15%;
+}
+
+input[type=text] {
+    text-align: center;
+    border: none;
+    background: white;
+    color: black;
+}
+
+.logo-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+}

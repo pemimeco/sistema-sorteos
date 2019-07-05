@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" />
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tabla.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="css/tribu.css">
+    <link rel="stylesheet" href="css/impresion.css">
+    <link rel="stylesheet" href="css/barraLateral.css">
+    <link rel="stylesheet" href="css/modalNotas.css">
+    <!-- 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+
+    <title>Sorteo De Casos</title>
+</head>
+
+<body>
+    <header class="header">
+        <h2>Sorteo de Casos</h2>
+        <select name="" class="filtro" id="filtro">
+            <option value="0">Seleccione un opcion</option>
+        </select>
+
+        <select name="" class="filtro" id="tipo">
+            <option value="0">Seleccione el tipo</option>
+        </select>
+        <a href="reportes.html" class="btn btn-info">Reportes</a>
+    </header>
+    <div class="body">
+        <div class="barra-lateral">
+            <ul class="opcionesBarraLateral">
+                <a href="index.html">
+                    <li><span><img class="iconoBarraLateral" src="img/icon.PNG" alt=""></span>Defensa Interna</li>
+                </a>
+                <a href="externa.html">
+                    <li><span><img class="iconoBarraLateral" src="img/icon.PNG" alt=""></span>Defensa Externa</li>
+
+                </a>
+                <a href="notas.html">
+                    <li class="seleccionado"><span><img class="iconoBarraLateral" src="img/icon.PNG" alt=""></span>Notas
+                    </li>
+
+                </a>
+                <a href="repechaje.html">
+                    <li><span><img class="iconoBarraLateral" src="img/icon.PNG" alt=""></span>Repechaje</li>
+
+                </a>
+            </ul>
+        </div>
+        <div class="tablas-container">
+            <div class="title-Est">
+                <h3>Lista de Estudiantes</h3>
+            </div>
+            <div class="tablaSorteo">
+
+                <table id="tbNotas" class="display responsive nowrap" style="width:100%">
+
+                    <thead>
+                        <tr>
+                            <th style="visibility: hidden;">iddefensa</th>
+                            <th style="visibility: hidden;">idpersona</th>
+                            <th>Nombre</th>
+                            <th>A.Paterno</th>
+                            <th>A.Materno</th>
+                            <th>Registro</th>
+                            <th>Carrera</th>
+                            <th>Area</th>
+                            <th>Caso</th>
+                            <th>Aprobado</th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+
+
+        </div>
+        <div id="overlaynotas" class="overlaynotas"></div>
+        <div id="modalNotas" class="modalNotas">
+            <div class="card">
+                <div class="card-header">
+                    Notas
+                    <button id="cerrarNotas">X</button>
+                </div>
+                <div class="card-body notas">
+                    <form class="formNotas" action="">
+                        <label for="nombre">Nombre del estudiante</label>
+                        <input type="text" id="notaEst" placeholder="nombre...">
+                        <label for="">Opcion</label>
+                        <input type="text" placeholder="que escribes">
+                        <label for="">Opcion</label>
+                        <input type="text" placeholder="que escribes">
+                        <label for="">Opcion</label>
+                        <input type="text" placeholder="que escribes">
+                    </form>
+                    <select class="selectnotas" name="" id="AR">
+                        <!-- <option>Seleccione una nota</option> -->
+                    </select>
+                    <button class="btn btn-outline-success notas" id='actNota'>Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+<script src="js/modulo1/url.js"></script>
+<script src="js/notas/notas.js"></script>
+<script src="js/notas/appNota.js"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+
+</html>

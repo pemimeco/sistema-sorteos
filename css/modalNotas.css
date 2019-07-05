@@ -1,0 +1,73 @@
+.modalNotas {
+    width: 50vw;
+    /* height: 40vh; */
+    background: red;
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.modalNotas.active {
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.formNotas {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.card-body.notas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn.btn-outline-success.notas {
+    margin-top: 20px
+}
+
+.selectnotas {
+    margin-top: 20px;
+}
+
+.btn.A {
+    background: green;
+    color: white
+}
+
+.btn.R {
+    background: red;
+    color: white
+}
+
+.btn.S {
+    background: grey;
+    color: white
+}
+
+.overlaynotas {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+
+}
+
+.overlaynotas.active {
+    visibility: visible;
+    opacity: 1;
+
+}

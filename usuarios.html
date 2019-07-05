@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <link rel="stylesheet" href="css/styleusu.css">
+    <link rel="stylesheet" href="css/tribu.css">
+    <title>Detalles Sorteo</title>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-header">
+            <div class="img-logo">
+                <img src="img/logo.png" alt="">
+            </div>
+            <div class="title-usu">
+                <h2 class="title">Detalles</h2>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <img class="img-body-logo" src="img/logo.png" alt="">
+            <div class="registro item">
+                <form id="dSorteo" action="" class="registro">
+                    <label for="registro" class="tReg">Registro</label>
+                    <input class="input-registro" name="registro" id="registro" type="text">
+                    <input class="btn rojo" type="button" value="Obtener Datos" id="obtDatos">
+
+
+                </form>
+            </div>
+
+            <div class="datos-container item">
+                <form action="" class="form">
+                    <label for="nombre">Nombre del Estudiante: </label>
+                    <input type="text" name="nombre" disabled id="nombreEst">
+                    <!-- <label for="nombre">Registro</label>
+                    <input type="text" name="registro" disabled id="registroEst"> -->
+                    <label for="nombre">Carrera</label>
+                    <input type="text" name="carrera" disabled id="carreraEst">
+                    <label for="nombre">Caso</label>
+                    <a target="_blank" href="" id="enlaceEst">
+                        <input class="viculo" type="text" name="caso" disabled id="casoEst">
+                    </a>
+                    <label for="nombre">Enlace</label>
+                    <a target="_blank" href="" id="enlaceEst">
+                        <input class="viculo" type="text" name="enlace" disabled id="enlaceEst2">
+                    </a>
+                    <label for="nombre">Area</label>
+                    <input type="text" name="area" disabled id="areaEst">
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script src="js/modulo2/app2.js"></script>
+    <!-- <script src="js/DetalleEstudiante.js"></script> -->
+</body>
+
+</html>

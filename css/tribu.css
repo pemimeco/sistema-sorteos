@@ -1,0 +1,122 @@
+.modal-tribu {
+    position: absolute;
+    display: none;
+    z-index: 20;
+    margin-left: 30%
+}
+
+.modal-tribu.active {
+    display: block;
+}
+
+.card.tribu {
+    width: 40vw;
+    /* height: 50vh; */
+}
+
+.card-header.tribu {
+    background: #CC2329;
+    justify-content: center;
+    /* display: flex;s */
+    position: relative
+}
+input[type="date"]{
+    border: 1px solid rgba(143, 143, 143, 0.5);
+    padding: 2px;
+    text-align: center;
+    border-radius: 5px;
+}
+.aula{
+    border: 1px solid grey !important;
+}
+.borrar-tribunal{
+    width: 25px;
+    /* height: 20px !important; */
+    height: 25px;
+    margin-left: 5px;
+    background: red;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 13px;
+    display: inline-block;
+    text-align: center;
+    color: white !important;
+    font-weight: bold;
+    outline: 0;
+    cursor: pointer;
+    transition: .3s;
+}
+.borrar-tribunal:active{
+    transform: scale(.9);
+}
+
+.lista-tribunales {
+    list-style: none;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-tribunales li {
+    padding: 20px 0;
+}
+
+.card-header.tribu h3 {
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.BTNX {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 25px;
+    outline: none !important;
+}
+
+.BTNX:hover {
+    cursor: pointer;
+}
+
+.select {
+    display: none;
+}
+
+.select.active {
+    display: block;
+}
+
+.texta.active {
+    display: none;
+}
+
+.viculo {
+    color: rgb(49, 110, 151);
+    text-decoration: underline;
+}
+
+.viculo:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+.card-body.tribunals {
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.listaTribunal{
+    list-style: none;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.5);
+}

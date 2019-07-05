@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" />
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="js/Winwheel.min.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tabla.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="css/tribu.css">
+    <link rel="stylesheet" href="css/impresion.css">
+    <link rel="stylesheet" href="css/barraLateral.css">
+    <link rel="stylesheet" href="css/modaCCasos.css">
+    <!-- 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+
+    <title>Sorteo De Casos</title>
+</head>
+
+<body>
+    <header class="header">
+        <h2>Sorteo de Casos</h2>
+        <select name="" class="filtro" id="filtro">
+            <option value="0">Seleccione un opcion</option>
+        </select>
+        <div>
+            <a href="reportes.html" class="btn btn-info">Reportes</a>
+            <button id="btnCcasos" class="btn btn-info">Cantidad de casos</button>
+        </div>
+    </header>
+    <div class="overlayCnotas" id="overlayCnotas"></div>
+    <div id="modalCCasos" class="modalCCasos">
+        <div class="card">
+            <div class="card-header Cnotas">
+                <h4>Cantidad de Casos</h4>
+                <button id="closeMCasos">X</button>
+            </div>
+            <div class="card-body Cnotas">
+                <div class="formCNotas" action="">
+                    <label class="Cnotas" type="text" id="area1">Area1</label>
+                    <input type="number" id="Cant1" value="0" min="0">
+                    <label id="c1" style="display: inline-block;">0</label>
+                    <button id="resetc1" class="btn btn-info"
+                        style="display: inline-block; align-content: right;">Reset</button>
+
+                    <label class="Cnotas" type="text" id="area2">Area2</label>
+                    <input type="number" id="Cant2" value="0" min="0">
+                    <label id="c2" style="display: inline-block;">0</label>
+                    <button id="resetc2" class="btn btn-info" style="display: inline-block;">Reset</button>
+
+                    <label class="Cnotas" type="text" id="area3">Area3</label>
+                    <input type="number" id="Cant3" value="0" min="0">
+                    <label id="c3" style="display: inline-block;">0</label>
+                    <button id="resetc3" class="btn btn-info" style="display: inline-block;">Reset</button>
+
+                </div>
+                <button class="btn btn-block Cnotas" id="btnLimite">Guardar</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="body">
+        <div class="barra-lateral">
+            <ul class="opcionesBarraLateral">
+                <a href="index.html">
+                    <li class="seleccionado"><span><img class="iconoBarraLateral" src="img/icon.PNG"
+                                alt=""></span>Defensa Interna</li>
+                </a>
+                <a href="externa.html">
+                    <li><span><img class="iconoBarraLateral" src="img/icon.PNG" alt=""></span> Defensa Externa</li>
+
+                </a>
+                <a href="notas.html">
+                    <li><span><img class="iconoBarraLateral" src="img/icon.PNG" alt=""></span>Notas</li>
+                </a>
+                <a href="repechaje.html">
+                    <li><span><img class="iconoBarraLateral" src="img/icon.PNG" alt=""></span>Repechaje</li>
+                </a>
+            </ul>
+            <br><br>
+            <h3>Total Casos:<p style="float:right;" id="totalCI"></p>
+            </h3>
+            <br>
+            <h3>Casos sin Asignar:<p style="float:right;" id="casoSinAsigI"></p>
+            </h3>
+            <br>
+            <h3>Casos Asignados:<p style="float:right;" id="casoAsigI"></p>
+            </h3>
+        </div>
+        <div class="tablas-container">
+            <div class="title-Est">
+                <h3>Lista de Estudiantes</h3>
+            </div>
+            <div class="tablaEst">
+
+                <table id="tbEstudiantes" class="display responsive nowrap" style="width:100%">
+
+                    <thead>
+                        <tr>
+                            <th style="visibility: hidden;">idpersona</th>
+                            <th>Nombre</th>
+                            <th>A.Paterno</th>
+                            <th>A.Materno</th>
+                            <th>Registro</th>
+                            <th>Carrera</th>
+                            <th>Sorteo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="title-Est">
+                <h3>Casos Asignados</h3>
+            </div>
+            <div class="tablaSorteo">
+                <table id="tbSorteos" class="display responsive nowrap" style="width:100%">
+
+                    <thead>
+                        <tr>
+                            <th style="visibility: hidden;">idarea</th>
+                            <th style="visibility: hidden;">iddefensa</th>
+                            <th>Nombre</th>
+                            <th>A.Paterno</th>
+                            <th>A.Materno</th>
+                            <th>Registro</th>
+                            <th>Carrera</th>
+                            <th>Area</th>
+                            <th>Caso</th>
+                            <th>Enlace</th>
+                            <th>Tribunal</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- aqui el modal para tribunales -->
+        <div id="modal-tribu" class="modal-tribu">
+            <div class="card tribu">
+                <div class="card-header tribu">
+                    <h3>Tribunales</h3>
+                    <button id="btnx" class="BTNX">X</button>
+                </div>
+                <div class="card-body tribunals">
+                    <div class="selected">
+                        <select class="form-control" name="" id="hora">
+
+                        </select>
+                        <hr>
+                        <input class="form-control" type="date" name="fechaDef" id="def">
+
+                        <hr>
+                        <select class="form-control" name="" id="labs">
+
+                        </select>
+                        <hr>
+
+                        <hr>
+                        <select class="form-control" name="" id="tribunales">
+
+                        </select>
+                        <br>
+                        <button class="btn btn-danger" id="añadir">Añadir</button>
+
+                    </div>
+                    <div class="lista">
+                        <ul id="lis">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success" id="actualizar">Guardar</button>
+                    <button class="btn btn-warning">Salir</button>
+                </div>
+            </div>
+        </div>
+        <!-- aqui el modal para actulizar  -->
+        <div id="modal-tribuA" class="modal-tribu">
+            <div class="card tribu">
+                <div class="card-header tribu">
+                    <h3>Detalles</h3>
+                    <button id="btnxA" class="BTNX">X</button>
+                </div>
+                <div class="card-body tribunals">
+                    <div class="selected">
+                        <!-- <select class="form-control" name="" id="hora">
+                           
+                        </select>
+                        <hr>
+                        <input class="form-control" type="date" name="fechaDef" id="def">
+                    
+                        <hr>
+                        <select class="form-control" name="" id="labs">
+                            
+                        </select>
+                        <hr>
+                
+                        <hr>
+                        <select class="form-control" name="" id="tribunales">
+                            
+                        </select>
+                        <br>
+                        <button class="btn btn-danger" id="añadir">Añadir</button> -->
+
+                    </div>
+                    <div class="lista">
+                        <ul id="lisD">
+                            <!-- Nombre:<li class="listaTribunal">MARIO JOAQUIN</li>
+                           Apellidos:<li>CORTEZ ANTELO</li>
+                           Carrera:<li>SISTEMAS</li>
+                           Arrea:<li>DESARROLOO</li>
+                           <hr>
+                           Tribunal:<li>Dennis</li>
+                           Tribunal:<li>gonzales</li>
+                           Fecha:<li>25-03-2019</li>
+                           Aula:<li>25-03-2019</li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success" id="actualizarA">Guardar</button>
+                    <button class="btn btn-warning">Salir</button>
+                </div>
+            </div>
+        </div>
+        <div class="overlay" id="overlays"></div>
+        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="myModalLabel">Sorteo</h4>
+                        <button type="button" id="equis" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="titleCaso" id="caso">ss</h3>
+                        <div class="container-button-modal">
+                            <button class="button Detener" id="detener"
+                                onclick="miRuleta.stopAnimation();">Detener</button>
+                        </div>
+                        <br />
+
+                        <div id="canvasContainer">
+                            <canvas id='canvas' height="350" width="500"></canvas><br>
+                            <!-- <input type="text" id="idpersona" class="text-nombre-modal" style="display:none;">
+                                <input type="text" id="idcaso" class="text-nombre-modal" style="display:none;"> -->
+                            <p id="idpersona" style="display:none;"></p>
+                            <p id="idcaso" style="display:none;"></p>
+                            <input type="text" id="nombreEst" class="text-nombre-modal" disabled>
+                            <a href="#" id="enlace" target="_blank"><input type="text" class="text-nombre-modal"
+                                    id="enlaceText" disabled></a>
+                            <input type="text" id="nombreArea" class="text-nombre-modal" disabled>
+                            <br>
+                        </div>
+                        <div class="text-nombre-modal">
+                            <!-- <input type="text" id="casoSorteado" disabled> -->
+                            <button id="asignarCaso" class="button Asignar">Asignar Caso</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" aria-label="Close" class="btn btn-danger">Salir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayd" class="overlayd"></div>
+        <div id="modal-impresion" class="modal-impresion">
+            <div class="card">
+                <div class="card-header impresion">
+                    <button id="cerrar-impre" class="btn cerrar-impresion">x</button>
+                    <figure class="logo-impre-container">
+                        <img src="img/logo.png" alt="">
+                    </figure>
+                    <div class="titulo-detalle">
+                        <h2>Detalle</h2>
+                    </div>
+                </div>
+                <div class="card-body reg">
+                    <img class="logo-fondo" src="img/logoute.png" alt="">
+                    <!-- <div class="registro">
+                        <form class="form-registro" action="">
+                            <h3>Registro</h3>
+                            <input class="registro-estudiante" type="text">
+                            <input type="submit" class="btn-registro rojo" value="Obtener Datos">
+                        </form>
+                    </div> -->
+                    <div class="Datos">
+                        <table id="example" class="table table-striped table-bordered dt-responsive nowrap"
+                            style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido.P</th>
+                                    <th>Carrera</th>
+                                    <th>Caso</th>
+                                    <th>Enlace</th>
+                                    <th>Area</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-add" id="btn-add">
+            <h3>+</h3>
+        </div>
+        <div class="overlay" id="overlay"></div>
+        <div class="modal-form" id="modal-form">
+            <div class="modal-header">
+                <h3>Registro de Personas</h3>
+                <button class="btn-exit" id="btn-exit">X</button>
+            </div>
+            <div class="modal-body">
+                <form action="" class="form" id="regPersona">
+                    <div class="form-modal">
+                        <label for="text">Usuario:</label>
+                        <input type="text" id="Usuario">
+                    </div>
+                    <div class="form-modal">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" id="nombre">
+                    </div>
+                    <div class="form-modal">
+                        <label for="Nombre">A.Paterno</label>
+                        <input type="text" id="apaterno">
+                    </div>
+                    <div class="form-modal">
+                        <label for="amaterno">A.Materno:</label>
+                        <input type="text" id="amaterno">
+                    </div>
+                    <div class="form-modal">
+                        <label for="carrera">Carrera:</label>
+                        <select id="carrera">
+                            <option value="0" default selected>Seleccione una carrera</option>
+                            <!-- <option value="1">Jefe</option>
+                                <option value="2">Estudiante</option> -->
+                        </select>
+                    </div>
+                    <div class="form-modal">
+                        <label for="roles">Rol:</label>
+                        <select id="list">
+                            <option value="0" default selected>Seleccione un rol</option>
+                            <!-- <option value="1">Jefe</option>
+                                <option value="2">Estudiante</option> -->
+                        </select>
+                    </div>
+                    <div id="reg" class="form-modal" style="display:none;">
+                        <label for="registro">Registro:</label>
+                        <input type="text" id="registro">
+                    </div>
+                    <div id="Jci" class="form-modal" style="display:none;">
+                        <label for="registro">Ci:</label>
+                        <input type="text" id="Ci">
+                    </div>
+
+                </form>
+                <div class="btn-modal-container">
+                    <button type="submit" class="btn-modal agregar" id="add">Agregar</button>
+                    <button class="btn-modal cancel" id="cancel">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<!-- <script src="js/tabla2.js"></script> -->
+<script src="js/form.js"></script>
+<!-- <script src="js/RegistroPersonas.js"></script> -->
+<!-- <script src="js/ruleta.js"></script> -->
+<script src="js/AsignacionCasos.js"></script>
+<script src="js/tribu.js"></script>
+<script src="js/modulo1/url.js"></script>
+<script src="js/modulo1/interface.js"></script>
+<script src="js/modulo1/app.js"></script>
+<script src="js/modulo1/rulta.js"></script>
+<script src="js/modulo2/url2.js"></script>
+<script src="js/modulo2/interface2.js"></script>
+<script src="js/modulo2/app2.js"></script>
+<script src="js/modalCCasos.js"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+</html>

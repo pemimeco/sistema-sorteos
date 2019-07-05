@@ -1,0 +1,40 @@
+.barra-lateral {
+    width: 20vw;
+    height: 90vh;
+    background: rgb(240, 240, 240);
+}
+
+.opcionesBarraLateral {
+    margin: 0;
+    padding: 0
+}
+
+.opcionesBarraLateral li:hover {
+    opacity: .8;
+    background: rgb(202, 202, 202)
+}
+
+.opcionesBarraLateral li {
+    color: black;
+    list-style: none;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 30px 15px;
+    text-align: center;
+}
+
+.opcionesBarraLateral a:hover {
+    text-decoration: none
+}
+
+.opcionesBarraLateral li a {
+    color: black
+}
+
+.seleccionado {
+    border-left: 4px solid red;
+    background: white;
+}
+.iconoBarraLateral{
+    width: 12%;
+}
