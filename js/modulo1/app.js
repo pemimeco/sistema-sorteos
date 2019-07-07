@@ -44,7 +44,3 @@ document.querySelector('#btnx').addEventListener('click', () => {
     console.log(valor);
     io.iniciarTablaSorteo(valor);
 });
-
-document.querySelector('#resetc1').addEventListener('click', () => {
-    const valor = document.querySelector('#')
-})

@@ -285,7 +285,7 @@ document.querySelector('#btnLimite').addEventListener('click', () => {
 
 })
 
-document.querySelector('#btnCcasos').addEventListener('click', () => {
+function cantidadAreas() {
     url.apiAreas(document.querySelector('#filtro').value)
         .then((res) => {
             let data = res.area.data
@@ -301,24 +301,56 @@ document.querySelector('#btnCcasos').addEventListener('click', () => {
             }
             url.apiTotalCasosxArea(area1)
                 .then((res) => {
-                    let data2 = res.totalCasosxArea.data
-                    console.log(data2)
-                    document.querySelector('#c1').innerHTML = '(' + data2[0].cantarea + ')'
-                    document.querySelector('#Cant1').max = data2[0].cantarea
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c1').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant1').max = data[0].cantarea
                 })
             url.apiTotalCasosxArea(area2)
                 .then((res) => {
-                    let data2 = res.totalCasosxArea.data
-                    console.log(data2)
-                    document.querySelector('#c2').innerHTML = '(' + data2[0].cantarea + ')'
-                    document.querySelector('#Cant2').max = data2[0].cantarea
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c2').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant2').max = data[0].cantarea
                 })
             url.apiTotalCasosxArea(area3)
                 .then((res) => {
-                    let data2 = res.totalCasosxArea.data
-                    console.log(data2)
-                    document.querySelector('#c3').innerHTML = '(' + data2[0].cantarea + ')'
-                    document.querySelector('#Cant3').max = data2[0].cantarea
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c3').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant3').max = data[0].cantarea
                 })
         });
+}
+
+function resetCantidadxArea(area) {
+    let url = `http://localhost:3000/api/resetCasosxArea/${area}`;
+        let data = {};
+        data.estado = 'V';
+        fetch(url, {
+                method: 'PUT', // or 'PUT'
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .catch(error => alert('eroor: ' + error))
+            .then(response => alert('insertado Correctamente'));
+}
+
+document.querySelector('#btnCcasos').addEventListener('click', () => {
+    cantidadAreas();
+})
+
+document.querySelector('#resetc1').addEventListener('click', () => {
+    resetCantidadxArea(area1)
+    
+})
+document.querySelector('#resetc2').addEventListener('click', () => {
+    resetCantidadxArea(area2)
+    cantidadAreas();
+})
+document.querySelector('#resetc3').addEventListener('click', () => {
+    resetCantidadxArea(area3)
+    cantidadAreas();
 })
