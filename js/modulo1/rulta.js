@@ -300,22 +300,22 @@ document.querySelector('#btnCcasos').addEventListener('click', () => {
                 // console.log(element)
             }
             url.apiTotalCasosxArea(area1)
-                .then((res2) => {
-                    let data2 = res2.totalCasosxArea.data
+                .then((res) => {
+                    let data2 = res.totalCasosxArea.data
                     console.log(data2)
                     document.querySelector('#c1').innerHTML = '(' + data2[0].cantarea + ')'
                     document.querySelector('#Cant1').max = data2[0].cantarea
                 })
             url.apiTotalCasosxArea(area2)
-                .then((res2) => {
-                    let data2 = res2.totalCasosxArea.data
+                .then((res) => {
+                    let data2 = res.totalCasosxArea.data
                     console.log(data2)
                     document.querySelector('#c2').innerHTML = '(' + data2[0].cantarea + ')'
                     document.querySelector('#Cant2').max = data2[0].cantarea
                 })
             url.apiTotalCasosxArea(area3)
-                .then((res2) => {
-                    let data2 = res2.totalCasosxArea.data
+                .then((res) => {
+                    let data2 = res.totalCasosxArea.data
                     console.log(data2)
                     document.querySelector('#c3').innerHTML = '(' + data2[0].cantarea + ')'
                     document.querySelector('#Cant3').max = data2[0].cantarea

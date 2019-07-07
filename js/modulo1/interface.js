@@ -118,7 +118,7 @@ class Interface {
                 },
                 {
                     "mDataProp": function (data, type, full) {
-                        console.log('datosSorteos', data.estado);
+                        // console.log('datosSorteos', data.estado);
                         if (data.estado === 'A') {
                             return ' <button onClick="mostrarTribunalA()" class="pdro btn btn-info">Detalle</button>'
                         } else {

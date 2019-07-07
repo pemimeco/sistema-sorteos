@@ -15,7 +15,7 @@ document.querySelector('#filtro').addEventListener('change', () => {
     url.apiTotalCasosxCarrera(document.querySelector('#filtro').value)
         .then((res) => {
             totalC = res.totalCasosxCarrera.data[0].count
-            console.log(totalC)
+            console.log("Total casos: " + totalC)
             document.querySelector('#totalCI').innerHTML = totalC
         })
     url.apiCasosAsig(document.querySelector('#filtro').value)
