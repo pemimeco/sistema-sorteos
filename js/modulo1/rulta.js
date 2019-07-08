@@ -344,13 +344,10 @@ document.querySelector('#btnCcasos').addEventListener('click', () => {
 
 document.querySelector('#resetc1').addEventListener('click', () => {
     resetCantidadxArea(area1)
-    
 })
 document.querySelector('#resetc2').addEventListener('click', () => {
     resetCantidadxArea(area2)
-    cantidadAreas();
 })
 document.querySelector('#resetc3').addEventListener('click', () => {
     resetCantidadxArea(area3)
-    cantidadAreas();
 })

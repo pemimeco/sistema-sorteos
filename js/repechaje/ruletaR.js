@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 let datos = {};
 datos.Array = new Array();
 
-let json = (filtro, idper) => {
+let json = (filtro, idcaso) => {
     datos.Array.splice(0, datos.Array.length)
     $.ajax({
-        url: `http://localhost:3000/api/obtenerCasosR/${filtro}/${idper}`,
+        url: `http://localhost:3000/api/obtenerCasosR/${filtro}/${idcaso}`,
         contentType: 'application/json',
         success: function (res) {
             res.data.map(
@@ -69,9 +69,9 @@ $('#detener').on('click', () => {
 $('#equis').on('click', () => {
     const fil = document.querySelector('#filtro').value;
     datos.Array.splice(0, datos.Array.length)
-    limite.Array.splice(0, limite.Array.length)
+    // limite.Array.splice(0, limite.Array.length)
     console.log(limite.Array.length, datos.Array.length)
-    json(fil, idper);
+    json(fil, idcaso);
 
     $caso.style.animation = '';
     $caso.classList.remove('paused');
@@ -80,10 +80,10 @@ $('#equis').on('click', () => {
     document.getElementById('nombreArea').value = ''
     document.querySelector('#Cant1').value = 0
     document.querySelector('#Cant2').value = 0
-    totalCasos();
+    // totalCasos();
 })
 
-document.querySelector('#btnLimiteR').addEventListener('click', () => {
+document.querySelector('#btnLimite').addEventListener('click', () => {
     limite.Array.splice(0, limite.Array.length);
     let cant1 = document.querySelector('#Cant1').value
     let cant2 = document.querySelector('#Cant2').value
@@ -143,9 +143,9 @@ document.querySelector('#btnLimiteR').addEventListener('click', () => {
                 );
             })
     }
-    setTimeout(() => {
-        mostrarRuleta();
-    }, 100);
+    // setTimeout(() => {
+    //     mostrarRuleta();
+    // }, 100);
     console.log(limite.Array.length, datos.Array.length)
 
 })
@@ -171,7 +171,7 @@ function RepLimite() {
 }
 
 function mostrarRuleta() {
-    RepLimite();
+    // RepLimite();
     $('#miModal').modal({
         backdrop: 'static',
         keyboard: false
@@ -203,10 +203,10 @@ $('#tbRepechaje').on('click', '.odd', function () {
     codigo = arr.registro;
     apellidoP = arr.apaterno;
     apellidoM = arr.amaterno;
-    json(fil, idper);
+    json(fil, idcaso);
     // $('#nombreEst').val(`${nombre} ${apallidoP} ${apellidoM}`);
     console.log(idcaso)
-    apiUrl.apiAreasxEstRep(codigo, fil)
+    // apiUrl.apiAreasxEstRep(codigo, fil)
 })
 
 $('#tbRepechaje').on('click', '.even', function () {
@@ -218,10 +218,10 @@ $('#tbRepechaje').on('click', '.even', function () {
     codigo = arr.registro;
     apellidoP = arr.apaterno;
     apellidoM = arr.amaterno;
-    json(fil, idper);
+    json(fil, idcaso);
     // $('#nombreEst').val(`${nombre} ${apellidoP} ${amaterno}`);
     console.log(idcaso)
-    apiUrl.apiAreasxEstRep(codigo, fil)
+    // apiUrl.apiAreasxEstRep(codigo, fil)
 })
 
 function getRandomColor() {
@@ -344,25 +344,25 @@ document.querySelector('#btnCcasos').addEventListener('click', () => {
                 // console.log(element)
             }
             url.apiTotalCasosxArea(area1)
-                .then((res2) => {
-                    let data2 = res2.totalCasosxArea.data
-                    console.log(data2)
-                    document.querySelector('#c1').innerHTML = '(' + data2[0].cantarea + ')'
-                    document.querySelector('#Cant1').max = data2[0].cantarea
+                .then((res) => {
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c1').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant1').max = data[0].cantarea
                 })
             url.apiTotalCasosxArea(area2)
-                .then((res2) => {
-                    let data2 = res2.totalCasosxArea.data
-                    console.log(data2)
-                    document.querySelector('#c2').innerHTML = '(' + data2[0].cantarea + ')'
-                    document.querySelector('#Cant2').max = data2[0].cantarea
+                .then((res) => {
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c2').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant2').max = data[0].cantarea
                 })
             url.apiTotalCasosxArea(area3)
-                .then((res2) => {
-                    let data2 = res2.totalCasosxArea.data
-                    console.log(data2)
-                    document.querySelector('#c3').innerHTML = '(' + data2[0].cantarea + ')'
-                    document.querySelector('#Cant3').max = data2[0].cantarea
+                .then((res) => {
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c3').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant3').max = data[0].cantarea
                 })
 
         });

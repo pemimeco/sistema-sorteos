@@ -33,7 +33,7 @@ class Externa {
                     data: 'idcaso',
                     visible: false
                 }, {
-                    data: 'iddefensa',
+                    data: 'idpersona',
                     visible: false
                 },
                 {

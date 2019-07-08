@@ -3,6 +3,7 @@ const $asignarCaso = document.getElementById('asignarCaso');
 const $detener = document.getElementById('detener');
 const $salirModal = document.getElementById('equis');
 let casoSorteado;
+let idcaso;
 let idper;
 let nombre;
 let apellidoP;
@@ -22,10 +23,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 let datos = {};
 datos.Array = new Array();
 
-let json = (filtro, idper) => {
+let json = (filtro, idcaso) => {
     datos.Array.splice(0, datos.Array.length)
     $.ajax({
-        url: `http://localhost:3000/api/obtenerCasosE/${filtro}/${idper}`,
+        url: `http://localhost:3000/api/obtenerCasosE/${filtro}/${idcaso}`,
         contentType: 'application/json',
         success: function (res) {
             res.data.map(
@@ -68,7 +69,7 @@ $('#equis').on('click', () => {
 
     const fil = document.querySelector('#filtro').value;
     datos.Array.splice(0, datos.Array.length)
-    json(fil, idper);
+    json(fil, idcaso);
 
 
     $caso.style.animation = '';
@@ -104,11 +105,12 @@ $('#tbExterna').on('click', '.odd', function () {
     let arr = $('#tbExterna').dataTable().fnGetData($(this))
     const fil = document.querySelector('#filtro').value;
     // {idpersona: 5, nombres: "PEDRO", apaterno: "MENDOZA", amaterno: "CORONADO"
+    idcaso = arr.idcaso;
     idper = arr.idpersona;
     nombre = arr.nombres;
     apellidoP = arr.apaterno;
     apellidoM = arr.amaterno;
-    json(fil, idper);
+    json(fil, idcaso);
     // $('#nombreEst').val(`${nombre} ${apallidoP} ${apellidoM}`);
     console.log(arr)
 })
@@ -116,11 +118,12 @@ $('#tbExterna').on('click', '.odd', function () {
 $('#tbExterna').on('click', '.even', function () {
     let arr = $('#tbExterna').dataTable().fnGetData($(this))
     const fil = document.querySelector('#filtro').value;
+    idcaso = arr.idcaso;
     idper = arr.idpersona;
     nombre = arr.nombres;
     apellidoP = arr.apaterno;
     apellidoM = arr.amaterno;
-    json(fil, idper);
+    json(fil, idcaso);
     // $('#nombreEst').val(`${nombre} ${apellidoP} ${amaterno}`);
     console.log(arr)
 })
@@ -307,6 +310,27 @@ document.querySelector('#btnCcasos').addEventListener('click', () => {
                 area3 = data[2].idarea;
                 // console.log(element)
             }
-            console.log(area2)
+            url.apiTotalCasosxArea(area1)
+                .then((res) => {
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c1').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant1').max = data[0].cantarea
+                })
+            url.apiTotalCasosxArea(area2)
+                .then((res) => {
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c2').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant2').max = data[0].cantarea
+                })
+            url.apiTotalCasosxArea(area3)
+                .then((res) => {
+                    let data = res.totalCasosxArea.data
+                    console.log(data)
+                    document.querySelector('#c3').innerHTML = '(' + data[0].cantarea + ')'
+                    document.querySelector('#Cant3').max = data[0].cantarea
+                })
+
         });
 })
